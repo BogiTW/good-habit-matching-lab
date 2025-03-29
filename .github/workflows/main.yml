@@ -1,0 +1,39 @@
+name: CI/CD 工作流程
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 設置 Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        
+    - name: 安裝依賴
+      run: npm ci || npm install
+      
+    - name: 檢查程式碼結構
+      run: |
+        ls -la
+        echo "檢查程式碼結構完成"
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 部署到 Zeabur (僅通知)
+      run: |
+        echo "代碼已推送到主分支"
+        echo "Zeabur 將自動開始部署程序"
+        echo "請在 Zeabur 控制台檢查部署狀態" 

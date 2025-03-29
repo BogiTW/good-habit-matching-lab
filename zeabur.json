@@ -1,0 +1,18 @@
+{
+  "build": {
+    "ignore": [
+      ".git",
+      "node_modules"
+    ]
+  },
+  "deploy": {
+    "startCommand": "npm start",
+    "healthCheck": {
+      "port": 3000,
+      "path": "/"
+    },
+    "environment": {
+      "NODE_ENV": "production"
+    }
+  }
+} 
