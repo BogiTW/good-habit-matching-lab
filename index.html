@@ -14,8 +14,17 @@
         }
         
         body {
-            background-color: #fff5f7;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
             color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #fcfaff !important; /* 淡淡的米白色，帶一絲紫調 */
+        }
+        
+        html {
+            background: #fcfaff;
         }
         
         .container {
@@ -65,6 +74,7 @@
             background-color: #d6336c;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(232, 62, 140, 0.2);
+            border-bottom: 3px solid #a5d8ff; /* 添加強調色邊框 */
         }
         
         .page {
@@ -77,16 +87,16 @@
         }
         
         /* 歡迎頁面樣式 */
-        .welcome-image {
-            width: 300px;
-            height: 300px;
+        .welcome-logo {
+            width: 200px;
+            height: 200px;
             margin: 0 auto 30px;
             border-radius: 50%;
             background-color: #ffe3eb;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 4rem;
             color: #e83e8c;
             box-shadow: 0 10px 30px rgba(232, 62, 140, 0.2);
             animation: float 3s ease-in-out infinite;
@@ -96,6 +106,272 @@
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
+        }
+        
+        .welcome-content {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .welcome-content h2 {
+            color: #e83e8c;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* 如何使用部分樣式 */
+        .usage-section {
+            padding: 60px 0;
+            background-color: transparent;
+            text-align: center;
+        }
+        
+        .usage-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
+            position: relative;
+        }
+        
+        .step-card {
+            position: relative;
+            flex: 0 0 150px;
+            background: #ffffff; /* 卡片保持白色背景 */
+            border-radius: 10px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2d8f3; /* 添加輔助色邊框 */
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(232, 62, 140, 0.15);
+            border-color: #e83e8c; /* 懸停時邊框變為主題色 */
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #e83e8c;
+            transition: all 0.3s ease;
+        }
+        
+        .step-icon img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e83e8c;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .step-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* 在手機版本中調整步驟排列方式 */
+        @media (max-width: 768px) {
+            .steps-container {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .step-card {
+                flex: 0 0 calc(50% - 20px);
+                margin-bottom: 20px;
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .step-card {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+        
+        /* 特點部分樣式 */
+        .features-section {
+            margin-bottom: 60px;
+        }
+        
+        .feature-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* 特點卡片使用輔助色作為背景 */
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid #e2d8f3; /* 輔助色邊框 */
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #e83e8c; /* 懸停時變為主題色 */
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fff5f7;
+            color: #e83e8c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* 開始按鈕使用強調色作為邊框 */
+        .start-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .start-btn {
+            padding: 15px 40px;
+            background-color: #e83e8c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            border-bottom: 3px solid #a5d8ff; /* 強調色邊框 */
+        }
+        
+        .start-btn:hover {
+            background-color: #d6336c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(232, 62, 140, 0.4);
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .steps-container {
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+            }
+            
+            .step-card {
+                margin-bottom: 40px;
+                max-width: 100%;
+                width: 200px;
+            }
+            
+            /* 在手機版本中調整箭頭方向 */
+            .steps-container::before {
+                top: 100px;
+                left: 50%;
+                right: auto;
+                bottom: 20%;
+                width: 3px;
+                height: 60%;
+                transform: translateX(-50%);
+                background: linear-gradient(180deg, transparent, #ffe3eb, #ffe3eb, transparent);
+            }
+            
+            .step-card:not(:last-child)::after {
+                content: '';
+                top: auto;
+                right: auto;
+                bottom: -35px;
+                left: 50%;
+                width: 10px;
+                height: 30px;
+                transform: translateX(-50%);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e83e8c'%3E%3Cpath d='M5 13.5L12 21L19 13.5H5Z'/%3E%3C/svg%3E");
+                animation: arrowPulseDown 1.5s infinite;
+            }
+            
+            @keyframes arrowPulseDown {
+                0% { transform: translateY(0) translateX(-50%); }
+                50% { transform: translateY(5px) translateX(-50%); }
+                100% { transform: translateY(0) translateX(-50%); }
+            }
+            
+            .feature-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-card {
+                margin-bottom: 20px;
+                width: 100%;
+            }
         }
         
         /* 習慣類別選擇頁面樣式 */
@@ -167,7 +443,7 @@
         
         .option:hover {
             border-color: #e83e8c;
-            background-color: #fff0f6;
+            background-color: #fff8fb;
         }
         
         .option.selected {
@@ -343,7 +619,7 @@
         }
         
         .recommendation {
-            background: #fff0f6;
+            background: #fff8fb;
             padding: 15px;
             border-radius: 10px;
             margin-top: 15px;
@@ -390,7 +666,7 @@
         }
         
         .habits-table th {
-            background: #fff0f6;
+            background: #fff8fb;
             color: #e83e8c;
         }
         
@@ -582,28 +858,137 @@
             color: #e83e8c;
             font-weight: bold;
         }
+        
+        /* 首頁背景色調整 */
+        .welcome-page {
+            background-color: #9be3ff;
+            padding: 40px 0;
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.style.background = '#d9f0ff';
+        document.documentElement.style.background = '#d9f0ff';
+    });
+    </script>
+    <script src="js/main.js"></script>
 </head>
-<body>
+<body style="background-color: #fcfaff !important;">
 
 <div class="container">
     <!-- 歡迎頁面 -->
     <section id="welcome" class="page active">
         <header>
             <h1>好習慣配對實驗室</h1>
-            <p>發現並培養適合您的好習慣，提升生活品質！</p>
+            <p>相愛容易，相處難——難在「生活習慣」的衝突。</p>
         </header>
         
-        <div class="welcome-image">
+        <div class="welcome-logo">
             <i class="fas fa-seedling"></i>
         </div>
         
-        <div style="text-align: center;">
-            <p>歡迎來到好習慣配對實驗室！</p>
-            <p>通過這個問卷，我們將幫助您發現最適合您的好習慣，<br>並提供個性化的建議來幫助您培養這些習慣。</p>
-            <p>只需花費約5分鐘時間完成問卷，開始您的好習慣養成之旅！</p>
+        <div class="welcome-content">
+            <p>你曾經遇過一開始很來電，但交往後卻因為生活習慣不合而分手的情況嗎？</p>
             
-            <button class="btn" onclick="showPage('categories')">開始問卷</button>
+            <p>我們相信，真正長久的感情，關鍵在於生活習慣的契合度。<br>
+            在這裡，我們不是單純靠星座、興趣或外表來配對，而是透過深入了解彼此的生活習慣與價值觀，幫助你找到能夠一起生活、真正適合的對象。</p>
+            
+            <h2>歡迎來到好習慣配對實驗室！</h2>
+            
+            <p>透過這個問卷，我們將協助你發現適合你的生活習慣偏好，<br>
+            並提供個人化的配對建議，幫你遇見習慣契合的另一半。</p>
+            
+            <p>只需花費約 5 分鐘完成問卷，<br>
+            就能展開一段以「了解習慣」為起點的戀愛旅程！</p>
+        </div>
+        
+        <!-- 如何使用部分 -->
+        <div class="usage-section">
+            <h2>配對流程</h2>
+            <!-- 步驟卡片容器 -->
+            <div class="steps-container">
+                <!-- 第一個步驟卡片 -->
+                <div class="step-card">
+                    <!-- 步驟編號 -->
+                    <div class="step-number">1</div>
+                    <!-- 步驟圖示容器 -->
+                    <div class="step-icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='80' height='80'%3E%3Cpath fill='none' stroke='%23e83e8c' stroke-width='1.5' d='M9,5H7a2,2,0,0,0-2,2v12a2,2,0,0,0,2,2h10a2,2,0,0,0,2-2V7a2,2,0,0,0-2-2h-2M9,5a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2M9,5a2,2,0,0,0,2,2h2a2,2,0,0,0,2-2M12,11h.01M8,18h8'/%3E%3Ccircle cx='12' cy='11' r='1' fill='%23e83e8c'/%3E%3Cpath fill='%23e83e8c' d='M8,18h8'/%3E%3Cpath fill='none' stroke='%2319b6bd' stroke-width='1.5' d='M3,14l2,2L10,9'/%3E%3C/svg%3E" alt="填寫心理測驗">
+                    </div>
+                    <div class="step-title">選擇習慣類別</div>
+                    <div class="step-desc">透過「9種構面」<br>更加認識自己<br>找到相同習慣的人</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='80' height='80'%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='12' r='4' fill='none' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%23e83e8c'/%3E%3Cpath d='M12,2 L12,4 M12,20 L12,22 M2,12 L4,12 M20,12 L22,12' stroke='%23e83e8c' stroke-width='1.5'/%3E%3C/svg%3E" alt="精準媒合">
+                    </div>
+                    <div class="step-title">習慣媒合</div>
+                    <div class="step-desc">媒合到共同習慣後<br>會提供「契合報告」<br>讓彼此初步認識</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='80' height='80'%3E%3Cpath fill='none' stroke='%23e83e8c' stroke-width='1.5' d='M6,18l3-3L6,12m12,0l-3,3l3,3'/%3E%3Cpath fill='%23e83e8c' d='M15,12l-3,3l-3-3'/%3E%3Cpath fill='none' stroke='%23e83e8c' stroke-width='1.5' d='M19,19a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h10a2,2,0,0,1,2,2Z'/%3E%3C/svg%3E" alt="互加好友">
+                    </div>
+                    <div class="step-title">15分鐘初步認識</div>
+                    <div class="step-desc">線上對談認識彼此<br>約會助理於會後<br>確認雙方意願後<br>決定是否進行下一步</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='80' height='80'%3E%3Cpath fill='none' stroke='%23e83e8c' stroke-width='1.5' d='M5,5a2,2,0,0,1,2-2H17a2,2,0,0,1,2,2V19a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2Z'/%3E%3Cline x1='8' y1='3' x2='8' y2='7' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Cline x1='16' y1='3' x2='16' y2='7' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Cline x1='4' y1='11' x2='20' y2='11' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Crect x='7' y='13' width='2' height='2' fill='%23aaa'/%3E%3Crect x='11' y='13' width='2' height='2' fill='%23aaa'/%3E%3Crect x='15' y='13' width='2' height='2' fill='%23aaa'/%3E%3Crect x='7' y='17' width='2' height='2' fill='%23aaa'/%3E%3Crect x='11' y='17' width='2' height='2' fill='%2319b6bd'/%3E%3Crect x='15' y='17' width='2' height='2' fill='%23aaa'/%3E%3C/svg%3E" alt="敲定見面細節">
+                    </div>
+                    <div class="step-title">敲定見面細節</div>
+                    <div class="step-desc">約會助理會協助安排<br>下次碰面時間與地點</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='80' height='80'%3E%3Crect x='2' y='6' width='20' height='12' rx='2' ry='2' fill='none' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Cline x1='2' y1='12' x2='22' y2='12' stroke='%23e83e8c' stroke-width='1.5'/%3E%3Cpath fill='%23e83e8c' d='M12,15a2,2,0,0,1-2-2,2,2,0,0,1,2-2,2,2,0,0,1,2,2A2,2,0,0,1,12,15Z'/%3E%3C/svg%3E" alt="開始約會">
+                    </div>
+                    <div class="step-title">開始約會</div>
+                    <div class="step-desc">相約見面，認識彼此</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 特點部分 -->
+        <div class="features-section">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3 class="feature-title">找到志同道合的朋友</h3>
+                    <p class="feature-desc">透過習慣配對找到與您有相似習慣和興趣的人</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">隱私保障</h3>
+                    <p class="feature-desc">我們重視您的資料隱私，所有資訊均受到保護</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">持續優化</h3>
+                    <p class="feature-desc">我們不斷改進推薦系統，為您提供更精準的配對</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="start-button-container">
+            <button class="btn start-btn" onclick="showPage('categories')">開始問卷</button>
         </div>
     </section>
     
@@ -823,601 +1208,6 @@
 </footer>
 
 <script>
-    // 定義圖標對應
-    const icons = {
-        lifestyle: "fa-home",
-        sleep: "fa-moon",
-        couple: "fa-heart",
-        social: "fa-users",
-        food: "fa-utensils",
-        leisure: "fa-gamepad",
-        fitness: "fa-running",
-        finance: "fa-wallet",
-        values: "fa-star"
-    };
-    
-    // 當前用戶信息
-    let currentUser = {
-        id: generateUserId(),
-        name: '',
-        phone: '',
-        submitTime: '',
-        primaryCategory: '',
-        habits: [],
-        answers: [] // 添加答案數組
-    };
-    
-    // 選擇選項
-    function selectOption(element, event) {
-        // 阻止冒泡，避免點擊標籤時觸發選項的點擊事件
-        event.stopPropagation();
-        
-        // 如果點擊的是標籤容器或標籤，不處理
-        if (event.target.classList.contains('tags-container') || 
-            event.target.classList.contains('tag') ||
-            event.target.classList.contains('tag-label') ||
-            event.target.classList.contains('add-tag-btn') ||
-            event.target.classList.contains('new-tag-input') ||
-            event.target.classList.contains('new-tag-confirm') ||
-            event.target.classList.contains('new-tag-cancel') ||
-            event.target.classList.contains('custom-text-input') ||
-            event.target.classList.contains('custom-text-container')) {
-            return;
-        }
-        
-        // 切換當前選項的選中狀態
-        element.classList.toggle('selected');
-        
-        // 如果這是「其他」選項且被選中，顯示自定義文字輸入框
-        if ((element.querySelector('p').textContent.includes('請直接填寫其他') || 
-             element.querySelector('p').textContent.includes('其他 (文字說明)')) && 
-            element.classList.contains('selected')) {
-            // 確保自定義文字輸入框存在
-            let customTextContainer = element.querySelector('.custom-text-container');
-            if (!customTextContainer) {
-                customTextContainer = document.createElement('div');
-                customTextContainer.className = 'custom-text-container';
-                customTextContainer.innerHTML = `
-                    <textarea class="custom-text-input" placeholder="請輸入您的自定義習慣內容" rows="3" onclick="event.stopPropagation()"></textarea>
-                `;
-                // 在標籤容器前插入自定義文字輸入框
-                const tagsContainer = element.querySelector('.tags-container');
-                element.insertBefore(customTextContainer, tagsContainer);
-                
-                // 為輸入框添加事件監聽器，保存用戶輸入
-                const customTextInput = customTextContainer.querySelector('.custom-text-input');
-                customTextInput.addEventListener('input', function() {
-                    saveAnswers();
-                });
-                
-                // 自動聚焦輸入框
-                customTextInput.focus();
-            } else {
-                customTextContainer.style.display = 'block';
-            }
-        } else if ((element.querySelector('p').textContent.includes('請直接填寫其他') || 
-                    element.querySelector('p').textContent.includes('其他 (文字說明)')) && 
-                   !element.classList.contains('selected')) {
-            // 如果取消選中，隱藏自定義文字輸入框
-            const customTextContainer = element.querySelector('.custom-text-container');
-            if (customTextContainer) {
-                customTextContainer.style.display = 'none';
-            }
-        }
-        
-        // 記錄選擇的答案
-        saveAnswers();
-    }
-    
-    // 切換標籤選中狀態
-    function toggleTag(tag, event) {
-        // 阻止冒泡，避免觸發父元素的點擊事件
-        event.stopPropagation();
-        
-        // 切換標籤的選中狀態
-        tag.classList.toggle('selected');
-        
-        // 記錄選擇的答案
-        saveAnswers();
-    }
-    
-    // 保存用戶的回答
-    function saveAnswers() {
-        const answers = [];
-        
-        // 獲取當前顯示的問卷
-        const activeQuestionSet = document.querySelector('.question-set[style="display: block"]') || 
-                                  document.querySelector('.question-set:not([style*="display: none"])');
-        
-        if (!activeQuestionSet) return;
-        
-        // 遍歷每個問題
-        const questions = activeQuestionSet.querySelectorAll('.question');
-        questions.forEach((question, questionIndex) => {
-            // 獲取問題文本
-            const questionText = question.querySelector('h3').textContent;
-            
-            // 獲取選中的選項
-            const selectedOptions = question.querySelectorAll('.option.selected');
-            const options = [];
-            
-            // 遍歷每個選中的選項
-            selectedOptions.forEach(option => {
-                // 獲取選項文本
-                const optionText = option.querySelector('p').textContent;
-                
-                // 獲取自定義文字內容（如果有）
-                let customText = '';
-                const customTextInput = option.querySelector('.custom-text-input');
-                if (customTextInput) {
-                    customText = customTextInput.value.trim();
-                }
-                
-                // 獲取選中的標籤
-                const selectedTags = option.querySelectorAll('.tag.selected');
-                const tags = Array.from(selectedTags).map(tag => tag.textContent);
-                
-                // 添加到選項數組
-                options.push({
-                    text: optionText,
-                    customText: customText,
-                    tags: tags
-                });
-            });
-            
-            // 添加到回答數組
-            answers.push({
-                questionIndex: questionIndex,
-                questionText: questionText,
-                options: options
-            });
-        });
-        
-        // 更新用戶回答
-        currentUser.answers = answers;
-    }
-    
-    // 生成隨機用戶ID
-    function generateUserId() {
-        return Math.floor(10000 + Math.random() * 90000);
-    }
-    
-    function showPage(pageId) {
-        // 隱藏所有頁面
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        
-        // 顯示指定頁面
-        document.getElementById(pageId).classList.add('active');
-        
-        // 滾動到頁面頂部
-        window.scrollTo(0, 0);
-    }
-    
-    // 顯示問卷
-    function showQuestionnaire(category) {
-        // 當前用戶選擇的類別
-        currentCategory = category;
-        
-        // 設置問卷標題
-        const titles = {
-            lifestyle: "生活習慣問卷",
-            sleep: "睡眠習慣問卷",
-            couple: "情侶互動問卷",
-            social: "人際相處問卷",
-            food: "飲食習慣問卷", 
-            leisure: "休閒習慣問卷",
-            fitness: "運動習慣問卷",
-            finance: "理財消費問卷",
-            values: "價值觀問卷"
-        };
-        
-        // 更新問卷標題
-        document.getElementById("questionnaire-title").textContent = titles[category];
-        
-        // 隱藏所有問卷
-        document.querySelectorAll('.question-set').forEach(set => {
-            set.style.display = 'none';
-        });
-        
-        // 顯示選擇的問卷
-        document.getElementById(`${category}-questions`).style.display = 'block';
-        
-        // 清空已選擇的選項
-        selectedOptions = [];
-        
-        // 顯示問卷頁面
-        showPage('questionnaire');
-    }
-    
-    function showResults() {
-        // 記錄提交時間
-        currentUser.submitTime = new Date().toLocaleString();
-        
-        // 獲取當前問卷類別
-        const activeQuestionSet = document.querySelector('.question-set[style="display: block"]') || 
-                                  document.querySelector('.question-set:not([style*="display: none"])');
-        if (activeQuestionSet) {
-            currentUser.primaryCategory = activeQuestionSet.id.replace('-questions', '');
-        }
-        
-        // 獲取當前類別的答案
-        updateResultsDisplay();
-        
-        showPage('results');
-    }
-    
-    function saveUserInfoAndShowHabits() {
-        // 獲取並保存用戶信息
-        const name = document.getElementById('user-name').value;
-        const phone = document.getElementById('user-phone').value;
-        
-        if (!name || !phone) {
-            alert('請填寫您的姓名和聯繫電話！');
-            return;
-        }
-        
-        // 更新當前用戶信息
-        currentUser.name = name;
-        currentUser.phone = phone;
-        
-        // 將回答轉換為習慣
-        convertAnswersToHabits();
-        
-        // 保存用戶信息到本地存儲
-        const users = JSON.parse(localStorage.getItem('habitLabUsers') || '[]');
-        users.push(currentUser);
-        localStorage.setItem('habitLabUsers', JSON.stringify(users));
-        
-        // 通過 API 提交到後端 (Google Sheets 整合)
-        fetch('/api/form/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(currentUser)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('表單提交結果:', data);
-            if (!data.success) {
-                console.warn('後端提交未成功，但數據已保存到本地:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('提交到後端失敗:', error);
-            // 即使提交失敗也繼續顯示習慣表格，因為數據已保存到本地
-        })
-        .finally(() => {
-            // 顯示習慣表格頁面
-            updateHabitsTable();
-            showPage('habits-table');
-        });
-    }
-    
-    // 將用戶的回答轉換為習慣
-    function convertAnswersToHabits() {
-        // 確保用戶有回答
-        if (!currentUser.answers || currentUser.answers.length === 0) {
-            return;
-        }
-        
-        // 清空之前的習慣
-        currentUser.habits = [];
-        
-        // 使用已保存的主要類別，如果沒有則使用默認值
-        if (!currentUser.primaryCategory) {
-            // 嘗試從第一個答案中獲取類別
-            const firstAnswer = currentUser.answers[0];
-            if (firstAnswer && firstAnswer.questionText) {
-                // 根據問題文本判斷類別
-                const text = firstAnswer.questionText.toLowerCase();
-                if (text.includes('睡眠')) {
-                    currentUser.primaryCategory = 'sleep';
-                } else if (text.includes('情侶') || text.includes('互動')) {
-                    currentUser.primaryCategory = 'couple';
-                } else if (text.includes('人際') || text.includes('社交')) {
-                    currentUser.primaryCategory = 'social';
-                } else if (text.includes('飲食')) {
-                    currentUser.primaryCategory = 'food';
-                } else if (text.includes('休閒')) {
-                    currentUser.primaryCategory = 'leisure';
-                } else if (text.includes('運動')) {
-                    currentUser.primaryCategory = 'fitness';
-                } else if (text.includes('理財') || text.includes('消費')) {
-                    currentUser.primaryCategory = 'finance';
-                } else if (text.includes('價值觀') || text.includes('信念')) {
-                    currentUser.primaryCategory = 'values';
-                } else {
-                    currentUser.primaryCategory = 'lifestyle';
-                }
-            } else {
-                currentUser.primaryCategory = 'lifestyle'; // 默認類別
-            }
-        }
-        
-        // 遍歷每個問題的答案
-        currentUser.answers.forEach(answer => {
-            // 遍歷每個選中的選項
-            answer.options.forEach(option => {
-                // 構建習慣名稱 - 使用自定義文字或選項文字
-                let habitName = option.customText || option.text;
-                
-                // 創建習慣對象
-                const habitObj = {
-                    category: currentUser.primaryCategory,
-                    name: habitName,
-                    description: "", // 將詳細描述設為空白，供用戶自行輸入
-                    tags: option.tags || []
-                };
-                
-                // 添加到習慣列表
-                currentUser.habits.push(habitObj);
-            });
-        });
-        
-        // 更新本地存儲
-        updateUserInStorage();
-    }
-    
-    // 新增一個函數來更新習慣的詳細描述
-    function updateHabitDescription(habitIndex, newDescription) {
-        if (currentUser.habits[habitIndex]) {
-            currentUser.habits[habitIndex].description = newDescription;
-            // 更新本地儲存
-            updateUserInStorage();
-        }
-    }
-    
-    // 更新習慣表格
-    function updateHabitsTable() {
-        const tableBody = document.getElementById('habits-table-body');
-        tableBody.innerHTML = '';
-        
-        currentUser.habits.forEach((habit, index) => {
-            const row = document.createElement('tr');
-            
-            // 類別圖標和名稱
-            const categoryCell = document.createElement('td');
-            const iconContainer = document.createElement('div');
-            iconContainer.className = `habit-icon ${habit.category}`;
-            
-            const categoryIcon = document.createElement('i');
-            categoryIcon.className = `fas ${icons[habit.category]}`;
-            iconContainer.appendChild(categoryIcon);
-            
-            categoryCell.appendChild(iconContainer);
-            
-            const categoryName = document.createElement('div');
-            categoryName.textContent = getCategoryName(habit.category);
-            categoryCell.appendChild(categoryName);
-            row.appendChild(categoryCell);
-            
-            // 項目編號 - 修復項目編號提取邏輯
-            const itemCell = document.createElement('td');
-            let itemNumber = '';
-            
-            // 嘗試從名稱中提取項目編號和類別（例如：1. 親密行為）
-            const questionMatch = habit.name.match(/^(\d+)\.\s*([^.。,，]+)/);
-            if (questionMatch && questionMatch.length > 2) {
-                // 格式化為 "數字. 類別名稱"
-                itemNumber = `${questionMatch[1]}. ${questionMatch[2].trim()}`;
-                itemCell.textContent = itemNumber;
-            } else {
-                // 如果沒有從名稱中匹配到，嘗試從對應的問題中提取
-                const answer = currentUser.answers.find(a => 
-                    a.options.some(o => o.text === habit.name || o.customText === habit.name)
-                );
-                
-                if (answer) {
-                    // 從問題文本中提取問題編號和類別
-                    const questionFullMatch = answer.questionText.match(/^(\d+)\.\s*([^.。,，]+)/);
-                    if (questionFullMatch && questionFullMatch.length > 2) {
-                        itemNumber = `${questionFullMatch[1]}. ${questionFullMatch[2].trim()}`;
-                        itemCell.textContent = itemNumber;
-                    }
-                }
-            }
-            
-            // 如果仍然無法提取，嘗試使用其他方法識別項目
-            if (!itemNumber && habit.category === 'couple') {
-                itemCell.textContent = "1. 親密行為";
-            } else if (!itemNumber && habit.name.includes('親密')) {
-                itemCell.textContent = "1. 親密行為";
-            }
-            
-            row.appendChild(itemCell);
-            
-            // 習慣名稱（移除項目編號）
-            const nameCell = document.createElement('td');
-            let displayName = habit.name;
-            // 如果習慣名稱含有編號格式（1. XXX），則只顯示後面的部分
-            if (habit.name.match(/^\d+\.\s*/)) {
-                displayName = habit.name.replace(/^\d+\.\s*/, '').trim();
-            }
-            displayName = displayName.replace(/<[^>]+>/g, '').trim();
-            nameCell.textContent = displayName;
-            row.appendChild(nameCell);
-            
-            // 詳細描述
-            const descriptionCell = document.createElement('td');
-            const descriptionTextarea = document.createElement('textarea');
-            descriptionTextarea.className = 'habit-description-edit';
-            descriptionTextarea.value = habit.description || '';
-            descriptionTextarea.placeholder = '點擊此處編輯描述';
-            descriptionTextarea.addEventListener('change', (e) => {
-                updateHabitDescription(index, e.target.value);
-            });
-            descriptionCell.appendChild(descriptionTextarea);
-            row.appendChild(descriptionCell);
-            
-            // 標籤
-            const tagsCell = document.createElement('td');
-            if (habit.tags && habit.tags.length > 0) {
-                habit.tags.forEach(tag => {
-                    const tagSpan = document.createElement('span');
-                    tagSpan.className = 'tag';
-                    tagSpan.textContent = tag;
-                    tagsCell.appendChild(tagSpan);
-                });
-            } else {
-                // 嘗試從名稱中提取標籤
-                const tags = extractTags(habit.name);
-                if (tags.length > 0) {
-                    tags.forEach(tag => {
-                        const tagSpan = document.createElement('span');
-                        tagSpan.className = 'tag';
-                        tagSpan.textContent = tag;
-                        tagsCell.appendChild(tagSpan);
-                    });
-                } else {
-                    tagsCell.textContent = '無';
-                }
-            }
-            row.appendChild(tagsCell);
-            
-            tableBody.appendChild(row);
-        });
-    }
-    
-    function addHabit() {
-        const category = document.getElementById('habit-category').value;
-        const name = document.getElementById('habit-name').value;
-        const description = document.getElementById('habit-description').value;
-        const tagsInput = document.getElementById('habit-tags').value;
-        
-        // 解析標籤
-        const tags = tagsInput ? tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-        
-        if (!name || !description) {
-            alert('請填寫習慣名稱和描述！');
-            return;
-        }
-        
-        // 創建新習慣對象
-        const newHabit = {
-            category: category,
-            name: name,
-            description: description,
-            tags: tags
-        };
-        
-        // 添加到當前用戶的習慣列表
-        currentUser.habits.push(newHabit);
-        
-        // 更新本地儲存
-        updateUserInStorage();
-        
-        // 更新習慣表格
-        updateHabitsTable();
-        
-        // 清空表單
-        document.getElementById('habit-name').value = '';
-        document.getElementById('habit-description').value = '';
-        document.getElementById('habit-tags').value = '';
-    }
-    
-    // 更新本地存儲中的用戶信息
-    function updateUserInStorage() {
-        const users = JSON.parse(localStorage.getItem('habitLabUsers') || '[]');
-        const userIndex = users.findIndex(u => u.id === currentUser.id);
-        
-        if (userIndex !== -1) {
-            users[userIndex] = currentUser;
-            localStorage.setItem('habitLabUsers', JSON.stringify(users));
-        }
-    }
-    
-    // 更新結果顯示
-    function updateResultsDisplay() {
-        const resultsContainer = document.getElementById('results-container');
-        resultsContainer.innerHTML = '';
-        
-        // 依據用戶選擇的類別顯示推薦
-        const categoryIcons = {
-            lifestyle: "fa-home",
-            sleep: "fa-moon",
-            couple: "fa-heart",
-            social: "fa-users",
-            food: "fa-utensils",
-            leisure: "fa-gamepad",
-            fitness: "fa-running",
-            finance: "fa-wallet",
-            values: "fa-star"
-        };
-        
-        const categoryNames = {
-            lifestyle: "生活習慣",
-            sleep: "睡眠習慣",
-            couple: "情侶互動習慣",
-            social: "人際相處習慣",
-            food: "飲食習慣",
-            leisure: "休閒習慣",
-            fitness: "運動習慣",
-            finance: "理財與消費習慣",
-            values: "價值觀跟信念"
-        };
-        
-        // 創建結果顯示區域
-        const resultCategory = document.createElement('div');
-        resultCategory.className = 'result-category';
-        
-        // 根據選擇的類別顯示結果
-        const category = currentUser.primaryCategory || 'lifestyle';
-        
-        resultCategory.innerHTML = `
-            <div class="result-header">
-                <div class="result-icon ${category}">
-                    <i class="fas ${categoryIcons[category]}"></i>
-                </div>
-                <h2 class="result-title">${categoryNames[category]}推薦</h2>
-            </div>
-            <p class="result-description">根據您的回答，我們推薦您培養以下${categoryNames[category]}：</p>
-            <ul id="recommendations-list">
-                <!-- 這裡將根據用戶的答案動態填充 -->
-            </ul>
-            
-            <div class="recommendation">
-                <h4><i class="fas fa-lightbulb"></i> 建議養成習慣</h4>
-                <p id="habit-suggestion">持續21天形成習慣，您可以設置每日提醒來幫助自己堅持。</p>
-            </div>
-        `;
-        
-        resultsContainer.appendChild(resultCategory);
-        
-        // 根據用戶回答生成推薦列表
-        const recommendationsList = document.getElementById('recommendations-list');
-        
-        // 找出用戶選擇的選項並顯示
-        currentUser.answers.forEach(answer => {
-            answer.options.forEach(option => {
-                const li = document.createElement('li');
-                
-                // 如果有自定義文字，顯示自定義文字
-                if (option.customText) {
-                    li.textContent = option.customText;
-                } else {
-                    // 如果有選中的標籤，則顯示
-                    if (option.tags && option.tags.length > 0) {
-                        li.textContent = `${option.text} (標籤: ${option.tags.join(', ')})`;
-                    } else {
-                        li.textContent = option.text;
-                    }
-                }
-                
-                recommendationsList.appendChild(li);
-            });
-        });
-        
-        // 如果沒有任何推薦，顯示默認信息
-        if (recommendationsList.children.length === 0) {
-            const li = document.createElement('li');
-            li.textContent = '請回到問卷選擇您感興趣的習慣';
-            recommendationsList.appendChild(li);
-        }
-    }
-
     // 頁面加載時
     window.addEventListener('DOMContentLoaded', () => {
         // 初始化頁面
@@ -1454,647 +1244,6 @@
             }
         });
     });
-    
-    // 加載問卷數據
-    function loadQuestionnaireData() {
-        // 優先從伺服器獲取問卷數據
-        fetchQuestionnaireData()
-            .then(data => {
-                // 如果成功獲取數據，則處理數據
-                console.log("成功從伺服器獲取問卷數據");
-                processQuestionnaireData(data);
-            })
-            .catch(err => {
-                console.error("從伺服器獲取問卷數據失敗:", err);
-                
-                // 如果從伺服器獲取失敗，嘗試從本地存儲獲取
-                const questionnaires = JSON.parse(localStorage.getItem('habitLabQuestionnaires') || '{}');
-                
-                // 如果有本地數據，則處理數據
-                if (Object.keys(questionnaires).length > 0) {
-                    console.log("使用本地存儲的問卷數據");
-                    processQuestionnaireData(questionnaires);
-                } else {
-                    console.log("沒有可用的問卷數據");
-                }
-            });
-    }
-    
-    // 從伺服器獲取問卷數據
-    function fetchQuestionnaireData() {
-        return new Promise((resolve, reject) => {
-            fetch('/api/questionnaires')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('伺服器響應錯誤: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // 保存到本地存儲
-                    localStorage.setItem('habitLabQuestionnaires', JSON.stringify(data));
-                    resolve(data);
-                })
-                .catch(error => {
-                    console.error('獲取問卷數據失敗:', error);
-                    reject(error);
-                });
-        });
-    }
-    
-    // 處理問卷數據，更新頁面內容
-    function processQuestionnaireData(questionnaires) {
-        // 如果沒有數據，則不進行替換
-        if (Object.keys(questionnaires).length === 0) {
-            console.log("問卷數據為空");
-            return;
-        }
-        
-        console.log("處理問卷數據:", questionnaires);
-        
-        // 逐個類別更新問卷
-        if (questionnaires.questions) {
-            // 如果數據是 {questions: [...]} 格式
-            const questions = questionnaires.questions;
-            
-            // 將問題按類別分組
-            const categorizedQuestions = {
-                lifestyle: [],
-                sleep: [],
-                couple: [],
-                social: [],
-                food: [],
-                leisure: [],
-                fitness: [],
-                finance: [],
-                values: []
-            };
-            
-            // 根據問題ID或標題來分類
-            questions.forEach(question => {
-                // 根據問題標題判斷類別
-                let category = 'lifestyle'; // 默認類別
-                
-                const title = question.title.toLowerCase();
-                if (title.includes('睡眠')) {
-                    category = 'sleep';
-                } else if (title.includes('情侶') || title.includes('互動') || title.includes('相處')) {
-                    category = 'couple';
-                } else if (title.includes('人際') || title.includes('社交')) {
-                    category = 'social';
-                } else if (title.includes('飲食') || title.includes('食物')) {
-                    category = 'food';
-                } else if (title.includes('休閒') || title.includes('娛樂')) {
-                    category = 'leisure';
-                } else if (title.includes('運動') || title.includes('健身')) {
-                    category = 'fitness';
-                } else if (title.includes('理財') || title.includes('消費')) {
-                    category = 'finance';
-                } else if (title.includes('價值觀') || title.includes('信念')) {
-                    category = 'values';
-                } else if (title.includes('生活') || title.includes('習慣')) {
-                    category = 'lifestyle';
-                }
-                
-                // 將問題添加到對應類別
-                categorizedQuestions[category].push({
-                    text: question.title,
-                    options: getOptionsFromQuestion(question)
-                });
-            });
-            
-            // 更新每個類別的問卷內容
-            Object.keys(categorizedQuestions).forEach(category => {
-                updateQuestionnaireCategory(category, categorizedQuestions[category]);
-            });
-            
-        } else {
-            // 如果數據是舊格式，直接處理
-            Object.keys(questionnaires).forEach(category => {
-                updateQuestionnaireCategory(category, questionnaires[category]);
-            });
-        }
-    }
-    
-    // 從問題對象中提取選項
-    function getOptionsFromQuestion(question) {
-        let options = [];
-        
-        // 如果問題有 sections，則從 sections 中獲取選項
-        if (question.sections && question.sections.length > 0) {
-            question.sections.forEach(section => {
-                if (section.options && section.options.length > 0) {
-                    const sectionOptions = section.options.map(option => {
-                        // 提取標籤
-                        const tags = extractTags(option);
-                        return {
-                            text: cleanOptionText(option),
-                            tags: tags
-                        };
-                    });
-                    options = options.concat(sectionOptions);
-                }
-            });
-        } 
-        // 如果問題直接有 options，則直接獲取
-        else if (question.options && question.options.length > 0) {
-            options = question.options.map(option => {
-                // 提取標籤
-                const tags = extractTags(option);
-                return {
-                    text: cleanOptionText(option),
-                    tags: tags
-                };
-            });
-        }
-        
-        return options;
-    }
-    
-    // 從選項文本中提取標籤
-    function extractTags(optionText) {
-        const tags = [];
-        // 匹配 <標籤> 格式的標籤
-        const tagMatches = String(optionText).match(/<([^>]+)>/g);
-        if (tagMatches) {
-            tagMatches.forEach(tagMatch => {
-                // 移除 < 和 > 字符
-                const tag = tagMatch.substring(1, tagMatch.length - 1);
-                tags.push(tag);
-            });
-        }
-        return tags;
-    }
-    
-    // 清理選項文本，移除標籤
-    function cleanOptionText(optionText) {
-        return String(optionText).replace(/<[^>]+>/g, '').trim();
-    }
-    
-    // 填充用戶詳情
-    function fillUserDetail(user) {
-        // 填充用戶基本信息
-        document.querySelector('.user-info-item:nth-child(1) .user-info-value').textContent = user.id;
-        document.querySelector('.user-info-item:nth-child(2) .user-info-value').textContent = user.name;
-        document.querySelector('.user-info-item:nth-child(3) .user-info-value').textContent = user.phone;
-        document.querySelector('.user-info-item:nth-child(4) .user-info-value').textContent = user.submitTime;
-        document.querySelector('.user-info-item:nth-child(5) .user-info-value').textContent = user.habits ? user.habits.length : 0;
-        
-        const categoryNames = {
-            lifestyle: '生活習慣',
-            sleep: '睡眠習慣',
-            couple: '情侶互動習慣',
-            social: '人際相處習慣',
-            food: '飲食習慣',
-            leisure: '休閒習慣',
-            fitness: '運動習慣',
-            finance: '理財與消費習慣',
-            values: '價值觀跟信念'
-        };
-        
-        document.querySelector('.user-info-item:nth-child(6) .user-info-value').textContent = categoryNames[user.primaryCategory] || '未指定';
-        
-        // 填充習慣列表
-        const habitsList = document.querySelector('.habits-list');
-        habitsList.innerHTML = '';
-        
-        const icons = {
-            lifestyle: "fa-home",
-            sleep: "fa-moon",
-            couple: "fa-heart",
-            social: "fa-users",
-            food: "fa-utensils",
-            leisure: "fa-gamepad",
-            fitness: "fa-running",
-            finance: "fa-wallet",
-            values: "fa-star"
-        };
-        
-        if (user.habits && user.habits.length > 0) {
-            user.habits.forEach(habit => {
-                const habitItem = document.createElement('div');
-                habitItem.className = 'habit-item';
-                
-                // 處理標籤顯示格式
-                let displayName = habit.name;
-                const tagsMatch = habit.name.match(/<([^>]+)>/g);
-                
-                if (tagsMatch) {
-                    // 移除標籤格式，僅顯示純文本
-                    displayName = habit.name.replace(/<[^>]+>/g, '');
-                }
-                
-                habitItem.innerHTML = `
-                    <div class="habit-icon ${habit.category}">
-                        <i class="fas ${icons[habit.category] || 'fa-heart'}"></i>
-                    </div>
-                    <div class="habit-detail">
-                        <div class="habit-title">${displayName}</div>
-                        <div class="habit-desc">${habit.description}</div>
-                        <div class="habit-tags">
-                            ${habit.tags ? habit.tags.map(tag => `<span class="habit-tag">${tag}</span>`).join('') : ''}
-                        </div>
-                    </div>
-                `;
-                habitsList.appendChild(habitItem);
-            });
-        } else {
-            habitsList.innerHTML = '<p>該用戶尚未添加任何習慣</p>';
-        }
-    }
-
-    // 保存用戶信息到本地存儲
-    function saveUserToStorage() {
-        // 獲取現有用戶
-        const users = JSON.parse(localStorage.getItem('habitLabUsers') || '[]');
-        
-        // 檢查用戶是否已存在
-        const existingUserIndex = users.findIndex(user => user.id === currentUser.id);
-        
-        if (existingUserIndex > -1) {
-            // 更新已存在的用戶
-            users[existingUserIndex] = currentUser;
-        } else {
-            // 添加新用戶
-            users.push(currentUser);
-        }
-        
-        // 保存到本地存儲
-        localStorage.setItem('habitLabUsers', JSON.stringify(users));
-    }
-    
-    // 獲取類別圖標
-    function getCategoryIcon(category) {
-        const icons = {
-            lifestyle: "fa-home",
-            sleep: "fa-moon",
-            couple: "fa-heart",
-            social: "fa-users",
-            food: "fa-utensils",
-            leisure: "fa-gamepad",
-            fitness: "fa-running",
-            finance: "fa-wallet",
-            values: "fa-star"
-        };
-        
-        return icons[category] || "fa-heart";
-    }
-    
-    // 獲取頻率文本
-    function getFrequencyText(option) {
-        // 根據選項或標籤判斷頻率
-        if (option.tags.includes('每天') || option.tags.includes('日常')) {
-            return '每天';
-        } else if (option.tags.includes('每週') || option.tags.includes('週末') || option.tags.includes('假日')) {
-            return '每週';
-        } else if (option.tags.includes('每月')) {
-            return '每月';
-        } else if (option.tags.includes('特殊時刻') || option.tags.includes('特別場合') || option.tags.includes('紀念日')) {
-            return '特定日期';
-        } else {
-            return '不定期';
-        }
-    }
-    
-    // 顯示新增標籤輸入框
-    function showAddTagInput(button, event) {
-        // 阻止事件冒泡
-        event.stopPropagation();
-        
-        // 獲取標籤容器
-        const tagsContainer = button.parentElement;
-        
-        // 隱藏新增標籤按鈕
-        button.style.display = 'none';
-        
-        // 獲取或創建輸入框容器
-        let inputContainer = tagsContainer.querySelector('.new-tag-input-container');
-        if (!inputContainer) {
-            inputContainer = document.createElement('div');
-            inputContainer.className = 'new-tag-input-container';
-            inputContainer.innerHTML = `
-                <input type="text" class="new-tag-input" placeholder="輸入標籤文字">
-                <div class="new-tag-buttons">
-                    <button class="new-tag-confirm" onclick="confirmAddTag(this, event)">確定</button>
-                    <button class="new-tag-cancel" onclick="cancelAddTag(this, event)">取消</button>
-                </div>
-            `;
-            tagsContainer.appendChild(inputContainer);
-        }
-        
-        // 顯示輸入框容器
-        inputContainer.style.display = 'flex';
-        
-        // 聚焦到輸入框
-        inputContainer.querySelector('.new-tag-input').focus();
-    }
-    
-    // 確認添加新標籤
-    function confirmAddTag(confirmButton, event) {
-        // 阻止事件冒泡
-        event.stopPropagation();
-        
-        // 獲取輸入框容器和標籤容器
-        const buttonsContainer = confirmButton.parentElement;
-        const inputContainer = buttonsContainer.parentElement;
-        const tagsContainer = inputContainer.parentElement;
-        
-        // 獲取輸入值
-        const tagText = inputContainer.querySelector('.new-tag-input').value.trim();
-        
-        // 如果有輸入內容，創建新標籤
-        if (tagText) {
-            // 創建新標籤
-            const newTag = document.createElement('span');
-            newTag.className = 'tag selected'; // 直接添加selected類，使標籤自動被選中
-            newTag.setAttribute('onclick', 'toggleTag(this, event)');
-            newTag.textContent = tagText;
-            
-            // 添加到標籤容器（在新增標籤按鈕之前）
-            const addTagBtn = tagsContainer.querySelector('.add-tag-btn');
-            tagsContainer.insertBefore(newTag, addTagBtn);
-        }
-        
-        // 隱藏輸入框容器
-        inputContainer.style.display = 'none';
-        
-        // 清空輸入框
-        inputContainer.querySelector('.new-tag-input').value = '';
-        
-        // 顯示新增標籤按鈕
-        tagsContainer.querySelector('.add-tag-btn').style.display = 'inline-block';
-        
-        // 記錄選擇的答案
-        saveAnswers();
-    }
-    
-    // 取消添加新標籤
-    function cancelAddTag(cancelButton, event) {
-        // 阻止事件冒泡
-        event.stopPropagation();
-        
-        // 獲取輸入框容器和標籤容器
-        const buttonsContainer = cancelButton.parentElement;
-        const inputContainer = buttonsContainer.parentElement;
-        const tagsContainer = inputContainer.parentElement;
-        
-        // 隱藏輸入框容器
-        inputContainer.style.display = 'none';
-        
-        // 清空輸入框
-        inputContainer.querySelector('.new-tag-input').value = '';
-        
-        // 顯示新增標籤按鈕
-        tagsContainer.querySelector('.add-tag-btn').style.display = 'inline-block';
-    }
-
-    // 為每個問卷類別添加「其他」選項
-    function addOtherOption(category, questionSet) {
-        // 如果是價值觀跟信念類別，不添加「自由填寫」選項
-        if (category === 'values') {
-            return;
-        }
-        
-        // 問題標題
-        const questionCount = questionSet.querySelectorAll('.question').length + 1;
-        const otherQuestionDiv = document.createElement('div');
-        otherQuestionDiv.className = 'question';
-        
-        // 問題標題 - 飲食習慣類別特殊處理
-        const otherQuestionHeader = document.createElement('h3');
-        if (category === 'food') {
-            otherQuestionHeader.textContent = `${questionCount}. 其他相關習慣`;
-        } else {
-            otherQuestionHeader.textContent = `${questionCount}. 其他${getCategoryName(category)}`;
-        }
-        otherQuestionDiv.appendChild(otherQuestionHeader);
-        
-        // 添加說明文字
-        const otherInstructionDiv = document.createElement('div');
-        otherInstructionDiv.className = 'options-instruction';
-        otherInstructionDiv.textContent = '* 您可以選擇多個選項';
-        otherQuestionDiv.appendChild(otherInstructionDiv);
-        
-        // 選項容器
-        const otherOptionsDiv = document.createElement('div');
-        otherOptionsDiv.className = 'options';
-        
-        // 其他選項
-        const otherOptionDiv = document.createElement('div');
-        otherOptionDiv.className = 'option';
-        otherOptionDiv.setAttribute('onclick', 'selectOption(this, event)');
-        
-        const otherOptionText = document.createElement('p');
-        otherOptionText.textContent = `請直接填寫其他${getCategoryName(category)}`;
-        otherOptionDiv.appendChild(otherOptionText);
-        
-        // 標籤容器
-        const otherTagsContainer = document.createElement('div');
-        otherTagsContainer.className = 'tags-container';
-        
-        // 添加標籤標題
-        const otherTagLabel = document.createElement('span');
-        otherTagLabel.className = 'tag-label';
-        otherTagLabel.textContent = '添加標籤：';
-        otherTagsContainer.appendChild(otherTagLabel);
-        
-        // 添加新增標籤按鈕
-        const otherAddTagBtn = document.createElement('span');
-        otherAddTagBtn.className = 'add-tag-btn';
-        otherAddTagBtn.setAttribute('onclick', 'showAddTagInput(this, event)');
-        otherAddTagBtn.innerHTML = '<i class="fas fa-plus"></i> 新增標籤';
-        otherTagsContainer.appendChild(otherAddTagBtn);
-        
-        otherOptionDiv.appendChild(otherTagsContainer);
-        otherOptionsDiv.appendChild(otherOptionDiv);
-        
-        otherQuestionDiv.appendChild(otherOptionsDiv);
-        questionSet.appendChild(otherQuestionDiv);
-    }
-
-    // 更新問卷類別內容
-    function updateQuestionnaireCategory(category, questions) {
-        const questionSet = document.getElementById(`${category}-questions`);
-        if (!questionSet) return;
-        
-        // 清空現有問題
-        questionSet.innerHTML = '';
-        
-        // 逐個添加問題
-        questions.forEach((question, index) => {
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            
-            // 問題標題
-            const questionHeader = document.createElement('h3');
-            questionHeader.textContent = `${index + 1}. ${question.text}`;
-            questionDiv.appendChild(questionHeader);
-            
-            // 添加說明文字
-            const instructionDiv = document.createElement('div');
-            instructionDiv.className = 'options-instruction';
-            instructionDiv.textContent = '* 您可以選擇多個選項';
-            questionDiv.appendChild(instructionDiv);
-            
-            // 選項容器
-            const optionsDiv = document.createElement('div');
-            optionsDiv.className = 'options';
-            
-            // 添加選項
-            question.options.forEach(option => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-                optionDiv.setAttribute('onclick', 'selectOption(this, event)');
-                
-                const optionText = document.createElement('p');
-                optionText.textContent = option.text;
-                optionDiv.appendChild(optionText);
-                
-                // 標籤容器
-                const tagsContainer = document.createElement('div');
-                tagsContainer.className = 'tags-container';
-                
-                // 添加標籤標題
-                const tagLabel = document.createElement('span');
-                tagLabel.className = 'tag-label';
-                tagLabel.textContent = '添加標籤：';
-                tagsContainer.appendChild(tagLabel);
-                
-                // 添加標籤選項
-                if (option.tags && option.tags.length > 0) {
-                    option.tags.forEach(tag => {
-                        const tagSpan = document.createElement('span');
-                        tagSpan.className = 'tag';
-                        tagSpan.setAttribute('onclick', 'toggleTag(this, event)');
-                        tagSpan.textContent = tag;
-                        tagsContainer.appendChild(tagSpan);
-                    });
-                }
-                
-                // 添加新增標籤按鈕
-                const addTagBtn = document.createElement('span');
-                addTagBtn.className = 'add-tag-btn';
-                addTagBtn.setAttribute('onclick', 'showAddTagInput(this, event)');
-                addTagBtn.innerHTML = '<i class="fas fa-plus"></i> 新增標籤';
-                tagsContainer.appendChild(addTagBtn);
-                
-                optionDiv.appendChild(tagsContainer);
-                optionsDiv.appendChild(optionDiv);
-            });
-            
-            // 添加「其他」選項作為每個問題選項列表的最後一個選項
-            const otherOptionDiv = document.createElement('div');
-            otherOptionDiv.className = 'option';
-            otherOptionDiv.setAttribute('onclick', 'selectOption(this, event)');
-            otherOptionDiv.style.backgroundColor = '#fff0f6'; // 淺粉色背景，使其突出顯示
-            
-            const otherOptionText = document.createElement('p');
-            otherOptionText.textContent = `其他 (文字說明)`;
-            otherOptionDiv.appendChild(otherOptionText);
-            
-            // 標籤容器
-            const otherTagsContainer = document.createElement('div');
-            otherTagsContainer.className = 'tags-container';
-            
-            // 添加標籤標題
-            const otherTagLabel = document.createElement('span');
-            otherTagLabel.className = 'tag-label';
-            otherTagLabel.textContent = '添加標籤：';
-            otherTagsContainer.appendChild(otherTagLabel);
-            
-            // 添加新增標籤按鈕
-            const otherAddTagBtn = document.createElement('span');
-            otherAddTagBtn.className = 'add-tag-btn';
-            otherAddTagBtn.setAttribute('onclick', 'showAddTagInput(this, event)');
-            otherAddTagBtn.innerHTML = '<i class="fas fa-plus"></i> 新增標籤';
-            otherTagsContainer.appendChild(otherAddTagBtn);
-            
-            otherOptionDiv.appendChild(otherTagsContainer);
-            optionsDiv.appendChild(otherOptionDiv);
-            
-            questionDiv.appendChild(optionsDiv);
-            questionSet.appendChild(questionDiv);
-        });
-        
-        // 為每個問卷類別添加「其他」選項問題
-        addOtherOption(category, questionSet);
-    }
-
-    // 獲取問卷類別的中文名稱
-    function getCategoryName(category) {
-        const categoryNames = {
-            lifestyle: "生活習慣",
-            sleep: "睡眠習慣",
-            couple: "情侶互動習慣",
-            social: "人際相處習慣",
-            food: "飲食習慣",
-            leisure: "休閒習慣",
-            fitness: "運動習慣",
-            finance: "理財與消費習慣",
-            values: "價值觀跟信念"
-        };
-        
-        return categoryNames[category] || "習慣";
-    }
-
-    // 添加「其他」文字輸入處理
-    function handleOtherOption(option, optionDiv, checkbox, questionId, sectionTitle) {
-        // 創建標籤
-        const label = document.createElement('label');
-        label.textContent = '其他：';
-        label.htmlFor = checkbox.id;
-        
-        // 創建文字輸入框
-        const textInput = document.createElement('input');
-        textInput.type = 'text';
-        textInput.className = 'other-input';
-        textInput.placeholder = '請輸入其他習慣...';
-        
-        // 檢查是否有已存在的「其他」回答
-        const existingOtherOption = `${sectionTitle ? sectionTitle + ': ' : ''}其他：`;
-        const existingAnswer = currentUser.answers.find(a => 
-            a.questionId === questionId && 
-            a.answer.some(ans => ans.startsWith(existingOtherOption)));
-        
-        if (existingAnswer) {
-            const otherAnswer = existingAnswer.answer.find(ans => ans.startsWith(existingOtherOption));
-            if (otherAnswer) {
-                const otherText = otherAnswer.split('其他：')[1].trim();
-                textInput.value = otherText;
-                checkbox.checked = true;
-            }
-        }
-        
-        // 處理文字輸入變更
-        textInput.addEventListener('input', function() {
-            if (checkbox.checked && this.value.trim()) {
-                let answer = currentUser.answers.find(a => a.questionId === questionId);
-                if (!answer) {
-                    answer = { questionId, answer: [] };
-                    currentUser.answers.push(answer);
-                }
-                
-                // 移除舊的「其他」選項
-                if (Array.isArray(answer.answer)) {
-                    answer.answer = answer.answer.filter(ans => !ans.startsWith(existingOtherOption));
-                }
-                
-                // 添加新的「其他」選項
-                const fullOption = `${existingOtherOption}${this.value.trim()}`;
-                if (Array.isArray(answer.answer)) {
-                    answer.answer.push(fullOption);
-                } else {
-                    answer.answer = [fullOption];
-                }
-            }
-        });
-        
-        optionDiv.appendChild(checkbox);
-        optionDiv.appendChild(label);
-        optionDiv.appendChild(textInput);
-        
-        return true;
-    }
 </script>
 
 </body>

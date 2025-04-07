@@ -1147,9 +1147,27 @@
             addSyncButton();
         }
         
-        // 初始化問卷管理
-        loadQuestionnaireData('lifestyle');
+        // 從後端加載問卷數據
+        loadQuestionnairesFromServer();
     });
+    
+    // 從後端加載問卷數據
+    function loadQuestionnairesFromServer() {
+        fetch('/api/questionnaires')
+            .then(response => response.json())
+            .then(data => {
+                console.log('從後端獲取問卷數據成功');
+                // 保存到localStorage
+                localStorage.setItem('habitLabQuestionnaires', JSON.stringify(data));
+                // 初始化問卷管理
+                loadQuestionnaireData('lifestyle');
+            })
+            .catch(error => {
+                console.error('從後端獲取問卷數據失敗:', error);
+                // 初始化問卷管理（使用本地數據）
+                loadQuestionnaireData('lifestyle');
+            });
+    }
     
     // 頁面切換
     function showPage(pageId) {
@@ -2021,7 +2039,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ questions: questionnaires })
+            body: JSON.stringify(questionnaires)
         })
         .then(response => response.json())
         .then(data => {
@@ -2332,30 +2350,149 @@
     
     // 添加同步按鈕到用戶列表上方
     function addSyncButton() {
-        // 檢查是否已經有同步按鈕
-        if (document.getElementById('sync-button')) {
-            return;
+        const actionBar = document.querySelector('.user-actions') || document.querySelector('.action-buttons');
+        if (!actionBar) {
+            // 在表格上方創建一個按鈕容器
+            const userTable = document.querySelector('.data-table');
+            if (!userTable) return;
+            
+            const buttonContainer = document.createElement('div');
+            buttonContainer.style.marginBottom = '15px';
+            buttonContainer.style.textAlign = 'right';
+            userTable.parentNode.insertBefore(buttonContainer, userTable);
+            
+            // 創建同步按鈕
+            const syncButton = document.createElement('button');
+            syncButton.className = 'btn btn-sync';
+            syncButton.textContent = '從雲端同步數據';
+            syncButton.style.backgroundColor = '#6c757d';
+            syncButton.onclick = syncDataFromCloud; // 綁定點擊事件
+            
+            // 創建測試連接按鈕
+            const testButton = document.createElement('button');
+            testButton.className = 'btn btn-test';
+            testButton.textContent = '測試Google連接';
+            testButton.style.backgroundColor = '#17a2b8';
+            testButton.style.marginRight = '10px';
+            testButton.onclick = testGoogleConnection; // 綁定點擊事件
+            
+            buttonContainer.appendChild(testButton);
+            buttonContainer.appendChild(syncButton);
         }
+    }
 
-        // 獲取按鈕容器
-        const buttonContainer = document.querySelector('.dashboard + h2 + div');
-        if (!buttonContainer) {
-            return;
+    // 從雲端同步數據
+    function syncDataFromCloud() {
+        // 禁用按鈕，避免重複點擊
+        const syncButton = document.querySelector('.btn-sync');
+        if (syncButton) {
+            syncButton.disabled = true;
+            syncButton.textContent = '同步中...';
         }
+        
+        // 調用同步API
+        fetch('/api/form/sync', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            // 重新啟用按鈕
+            if (syncButton) {
+                syncButton.disabled = false;
+                syncButton.textContent = '從雲端同步數據';
+            }
+            
+            // 顯示同步結果
+            let message = `同步結果: ${result.success ? '成功' : '失敗'}\n`;
+            message += `${result.message}\n`;
+            
+            if (result.details) {
+                message += `\n詳細信息:\n`;
+                message += `本地數據: ${result.details.localDataCount || 0} 筆\n`;
+                message += `雲端數據: ${result.details.sheetsDataCount || 0} 筆\n`;
+                message += `待同步數據: ${result.details.newDataCount || 0} 筆\n`;
+                
+                if (result.details.syncAttempts && result.details.syncAttempts.length > 0) {
+                    message += `\n同步嘗試詳情:\n`;
+                    result.details.syncAttempts.forEach((attempt, index) => {
+                        message += `${index+1}. ID=${attempt.id}, 名稱=${attempt.name}, 結果: ${attempt.success ? '成功' : '失敗'}\n`;
+                        if (!attempt.success && attempt.error) {
+                            message += `   錯誤: ${attempt.error}\n`;
+                        }
+                    });
+                }
+            }
+            
+            if (result.error) {
+                message += `\n錯誤詳情: ${result.error}`;
+            }
+            
+            alert(message);
+            
+            // 同步成功後重新加載數據
+            if (result.success) {
+                loadUserData();
+            }
+        })
+        .catch(error => {
+            // 重新啟用按鈕
+            if (syncButton) {
+                syncButton.disabled = false;
+                syncButton.textContent = '從雲端同步數據';
+            }
+            
+            console.error('同步數據錯誤:', error);
+            alert(`同步數據失敗: ${error.message}`);
+        });
+    }
 
-        // 創建同步按鈕
-        const syncButton = document.createElement('button');
-        syncButton.id = 'sync-button';
-        syncButton.className = 'btn btn-secondary';
-        syncButton.innerHTML = '<i class="fas fa-sync"></i> 從雲端同步數據';
-        syncButton.style.marginLeft = '10px';
-        syncButton.onclick = function() {
-            loadUserData();
-            alert('正在從 Google Sheets 同步數據...');
-        };
-
-        // 添加按鈕到容器
-        buttonContainer.appendChild(syncButton);
+    // 測試Google Sheets連接
+    function testGoogleConnection() {
+        // 禁用按鈕，避免重複點擊
+        const testButton = document.querySelector('.btn-test');
+        if (testButton) {
+            testButton.disabled = true;
+            testButton.textContent = '測試中...';
+        }
+        
+        // 調用測試API
+        fetch('/api/form/test-connection')
+        .then(response => response.json())
+        .then(result => {
+            // 重新啟用按鈕
+            if (testButton) {
+                testButton.disabled = false;
+                testButton.textContent = '測試Google連接';
+            }
+            
+            // 顯示測試結果
+            let message = `連接測試結果: ${result.success ? '成功' : '失敗'}\n`;
+            message += `${result.message}\n\n`;
+            
+            message += `API密鑰: ${result.apiKeyValid ? '有效 ✓' : '無效 ✗'}\n`;
+            message += `Sheet ID: ${result.sheetIdValid ? '有效 ✓' : '無效 ✗'}\n`;
+            message += `表格訪問: ${result.sheetAccessible ? '可訪問 ✓' : '不可訪問 ✗'}\n`;
+            message += `工作表訪問: ${result.worksheetAccessible ? '可訪問 ✓' : '不可訪問 ✗'}\n`;
+            
+            if (result.error) {
+                message += `\n錯誤詳情: ${result.error}`;
+            }
+            
+            alert(message);
+        })
+        .catch(error => {
+            // 重新啟用按鈕
+            if (testButton) {
+                testButton.disabled = false;
+                testButton.textContent = '測試Google連接';
+            }
+            
+            console.error('測試連接錯誤:', error);
+            alert(`測試連接失敗: ${error.message}`);
+        });
     }
 </script>
 
